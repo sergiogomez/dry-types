@@ -9,7 +9,7 @@ module Dry
       attr_reader :type
 
       # @param [Type] type
-      def initialize(type, *)
+      def initialize(type, *, **)
         super
         @type = type
       end
@@ -63,7 +63,7 @@ module Dry
           response = type.__send__(meth, *args, &block)
 
           if decorate?(response)
-            self.class.new(response, options)
+            self.class.new(response, *@__args__[1..-1], **options)
           else
             response
           end

@@ -16,7 +16,7 @@ module Dry
         # @param [Class] _primitive
         # @param [Hash] options
         # @option options [Hash{Symbol => Definition}] :member_types
-        def initialize(_primitive, options)
+        def initialize(_primitive, **options)
           @member_types = options.fetch(:member_types)
           super
         end
@@ -216,12 +216,12 @@ module Dry
         # @param [Class] primitive
         # @param [Hash] options
         # @see #initialize
-        def self.new(primitive, options)
+        def self.new(primitive, **options)
           member_types = options.
             fetch(:member_types).
             each_with_object({}) { |(k, t), res| res[k] = t.safe }
 
-          super(primitive, options.merge(member_types: member_types))
+          super(primitive, **options, member_types: member_types)
         end
 
         # @param [Object] value

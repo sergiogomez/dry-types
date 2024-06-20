@@ -16,7 +16,7 @@ module Dry
       # @param [Type] type
       # @param [Hash] options
       # @option options [Array] :values
-      def initialize(type, options)
+      def initialize(type, **options)
         super
         @values = options.fetch(:values).freeze
         @values.each(&:freeze)

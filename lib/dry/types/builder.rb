@@ -56,7 +56,7 @@ module Dry
       # @param [#call,nil] block
       # @return [Constructor]
       def constructor(constructor = nil, **options, &block)
-        Constructor.new(with(options), fn: constructor || block)
+        Constructor.new(with(**options), fn: constructor || block)
       end
     end
   end

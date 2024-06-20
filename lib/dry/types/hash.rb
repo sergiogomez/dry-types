@@ -17,7 +17,7 @@ module Dry
             end
         }
 
-        klass.new(primitive, options.merge(member_types: member_types, meta: meta))
+        klass.new(primitive, **options, member_types: member_types, meta: meta)
       end
 
       # @param [{Symbol => Definition}] type_map
